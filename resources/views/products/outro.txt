@@ -1,0 +1,125 @@
+<br/>
+                        <div class="md:grid md:grid-cols-3 md:gap-6">
+
+                            <div class="md:col-span-1">
+                                <div class="px-4 sm:px-0">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Market Place</h3>
+                                    <p class="mt-1 text-sm text-gray-600">Adicione aqui os links das URL do seu produto cadastrado no seu market place.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 md:mt-0 md:col-span-2">
+
+                                @if (session('alert'))
+                                    <div class="bg-gray-200 p-3 mb-3 rounded-lg">
+                                        {{ session('alert') }}
+                                    </div>
+                                @endif
+
+                                <div class="shadow overflow-hidden sm:rounded-md">
+
+                                    <div class="px-4 py-5 bg-white sm:p-6">
+
+                                        <div class="grid grid-cols-4 gap-4">
+
+                                            <div class="md:col-span-4">
+                                                <label for="amazon"
+                                                    class="block text-sm font-medium text-gray-700">Amazon:</label>
+                                                <input type="text" name="amazon" value="{{ old('amazon') }}"
+                                                    maxlength="200"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('amazon')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="md:col-span-4">
+                                                <label for="ole7"
+                                                    class="block text-sm font-medium text-gray-700">ELO7:</label>
+                                                <input type="text" name="ole7" value="{{ old('ole7') }}"
+                                                    maxlength="9"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('ole7')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="md:col-span-4">
+                                                <label for="enjoei"
+                                                    class="block text-sm font-medium text-gray-700">Enjoei:</label>
+                                                <input type="text" name="enjoei" value="{{ old('enjoei') }}"
+                                                    maxlength="9"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('enjoei')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="md:col-span-4">
+                                                <label for="mercado_face"
+                                                    class="block text-sm font-medium text-gray-700">Mercado Face:</label>
+                                                <input type="text" name="mercado_face" value="{{ old('mercado_face') }}"
+                                                    maxlength="9"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('mercado_face')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="md:col-span-4">
+                                                <label for="magalu"
+                                                    class="block text-sm font-medium text-gray-700">Magalu:</label>
+                                                <input type="text" name="magalu" value="{{ old('magalu') }}"
+                                                    maxlength="9"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('magalu')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="md:col-span-4">
+                                                <label for="meli"
+                                                    class="block text-sm font-medium text-gray-700">Mercado Livre:</label>
+                                                <input type="text" name="meli" value="{{ old('meli') }}"
+                                                    maxlength="9"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('meli')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="md:col-span-4">
+                                                <label for="olx"
+                                                    class="block text-sm font-medium text-gray-700">OLX:</label>
+                                                <input type="text" name="olx" value="{{ old('olx') }}"
+                                                    maxlength="9"
+                                                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                @error('olx')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+                        @if($product->photos->count())
+                                <img  src="{{ asset('storage/'.$product->photos->first()->image) }}" alt="{{$product->title}}" id="photo" class="w-full mb-1"/>
+                                <div class="row">
+                                    @foreach ($product->photos as $photo)
+                                        <div>
+                                            <a onClick="changeImage('https://dummyimage.com/600x400/000/f00.jpg')" class="cursor-pointer">
+                                                <img src="{{asset('storage/'.$photo->image)}}" alt="Foto" class="w-full" />
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <img src="https://dummyimage.com/600x400/000/f00.jpg" alt="Imagem indisponivel" class="card-img-top"/>
+                            @endif
